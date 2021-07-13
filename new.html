@@ -42,7 +42,7 @@
 
 
          
-              <div class="form-group">
+              <div class="form-group" id="skillHead">
                 <label >Enter your skills</label>
                 <input type="text" class="form-control" id="skill1" placeholder="Skill 1">
                 <input type="text" class="form-control" id="skill2" placeholder="Skill 2">
@@ -58,10 +58,10 @@
 
 
               <!-- Area of interest -->
-              <div class="form-group">
+              <div class="form-group" id="aoiHead">
                 <label >Enter your area of interest</label>
                 <input type="text" class="form-control" id="aoi1" placeholder="area of interest 1 ">
-                <input type="text" class="form-control" id="aoi" placeholder="area of interest 2">
+                <input type="text" class="form-control" id="aoi2" placeholder="area of interest 2">
                 <input type="text" class="form-control" id="aoi3" placeholder="area of interest 3">
                 <input type="text" class="form-control" id="aoi4" placeholder="area of interest 4">
                
@@ -75,7 +75,7 @@
                  <!-- follow me social media  linkedIn-->
             <div class="form-group">
               <label >Do you have linked In profile?</label>
-              <input type="checkbox" id="check">
+              <input type="checkbox"  id="check">
              <button onclick="linkedInCheck()"   >Yes</button>
              <button  onclick="linkedInUnCheck()" >NO</button>
    
@@ -89,7 +89,7 @@
 
           <!-- Projects -->
           <div class="form-group">
-            <h5>Project</h5>
+            <h5>Projects</h5>
             <br>
             <label>Project title</label>
             <br>
@@ -114,19 +114,61 @@
    
 <script>
  
-  let i=5;
+  let skillLength=5;
   let y=5;
   let z=2;
+  let skills=[];
+  let aoiArray=[];
+  let projectTitle=[];
+  let projectDes=[];
    function data(){
     event.preventDefault();
         localStorage.setItem("name",JSON.stringify(document.querySelector("#name").value)) ||[];
         localStorage.setItem("college",JSON.stringify(document.querySelector("#college").value)) ||[];
         localStorage.setItem("email",JSON.stringify(document.querySelector("#email").value)) ||[];
         localStorage.setItem("number",JSON.stringify(document.querySelector("#number").value)) ||[];
-        localStorage.setItem("linkedin",JSON.stringify(document.querySelector("#linkedin").value)) ||[];
-  //      localStorage.setItem("socialmedia",JSON.stringify(document.querySelector("#socialmedia").value)) ||[];
+        localStorage.setItem("linkedin",JSON.stringify(document.querySelector("#linkedIn").value)) ||[];
+        localStorage.setItem("department",JSON.stringify(document.querySelector("#department").value)) ||[];
+        localStorage.setItem("percentage",JSON.stringify(document.querySelector("#percentage").value)) ||[];
+        localStorage.setItem("address",JSON.stringify(document.querySelector("#address").value)) ||[];
+
+        for(let l=1;l<skillLength; l++){
+        
+         
+         
+          skills.push(document.getElementById("skill"+eval(l)).value);
+          
+        }
+        let skill={
+          skills
+        }
+        
+        for(let l=1;l<y; l++){
+                       
+        aoiArray.push(document.getElementById("aoi"+eval(l)).value);
+        }
+        let aoi={
+           AreaOfInterest:aoiArray
+         };
+         
+         for(let l=1;l<z; l++){
+           
+               projectTitle.push(document.getElementById("project"+eval(l)).value);
+               projectDes.push(document.getElementById("projectdes"+eval(l)).value);
+              console.log(l);
+         }
+         
+         let project={
+           projectTitle:projectTitle,
+           ProjectDescription:projectDes
+         };
+  
+      
+      localStorage.setItem("skills",JSON.stringify(skill));
+      localStorage.setItem("areaOfInterest",JSON.stringify(aoi));
+      localStorage.setItem("Project",JSON.stringify(project));
         alert("success");
-          window.location.href = "index.html";
+          
    } 
     function addSkill(){
      event.preventDefault();
@@ -135,9 +177,9 @@
     let input=document.createElement("input");
     input.classList.add("form-control");
     input.setAttribute("type", "text");
-    input.setAttribute("placeholder", "Enter skill "+eval(i));
-    input.setAttribute("id","skill"+eval(i));
-    i++;
+    input.setAttribute("placeholder", "Enter skill "+eval(skillLength));
+    input.setAttribute("id","skill"+eval(skillLength));
+    skillLength++;
     form.appendChild(input);
    let foo = document.getElementById("show");
    foo.appendChild(form);
@@ -148,8 +190,9 @@
     event.preventDefault();
     let list = document.getElementById("show");
   list.removeChild(list.lastElementChild);
-  i--;
+  skillLength--;
    }
+
    function addAoi(){
      event.preventDefault();
     let form = document.createElement("form");
@@ -158,7 +201,7 @@
     input.classList.add("form-control");
     input.setAttribute("type", "text");
     input.setAttribute("placeholder", "Enter Area of interest "+eval(y));
-    input.setAttribute("id","skill"+eval(i));
+    input.setAttribute("id","aoi"+eval(y));
     y++;
     form.appendChild(input);
    let foo = document.getElementById("showAoi");
@@ -219,11 +262,11 @@
     let des=document.createElement("textarea");
     des.classList.add("form-control");
     des.setAttribute("placeholder","Enter description");
-    input.setAttribute("id","projectdes"+eval(z))
+    des.setAttribute("id","projectdes"+eval(z))
  
    title.innerHTML="Project title";
    desTitle.innerHTML="Project description";
-    z++;
+   z++;
     form.appendChild(title);
     form.appendChild(linebreak2);
     form.appendChild(input);
@@ -233,7 +276,7 @@
     form.appendChild(des);
    let foo = document.getElementById("addProject");
    foo.appendChild(form);
-   
+
      
     }
     function removeProject(){
