@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Resume Makerr</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <link rel="stylesheet" href="./input.css"
+</head>
+
+<body>
+  <center>
+    <h1>Resume Maker </h1>
+  </center>
+  <form class="form">
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter Your Name">
+      <small id="emailHelp" class="form-text text-muted">First name and then Last Name Eg.(Viswa Kumar A S)</small>
+    </div>
+    <div class="form-group">
+      <label>College</label>
+      <input type="text" class="form-control" id="college" placeholder="Enter your College Name">
+    </div>
+    <div class="form-group">
+      <label>Department</label>
+      <input type="text" class="form-control" id="department" placeholder="Enter your department">
+    </div>
+    <div class="form-group">
+      <label>percentage</label>
+      <input type="text" class="form-control" id="percentage" placeholder="Enter your cgpa or percentage">
+    </div>
+    <!-- contact me -->
+
+    <div class="form-group">
+      <label>Mobile</label>
+      <input type="number" class="form-control" id="number" placeholder="Enter your contact number">
+    </div>
+    <div class="form-group">
+      <label>address</label>
+      <input type="text" class="form-control" id="address" placeholder="Enter your address">
+    </div>
+
+
+ 
+     <!-------------skills-->
+       
+      <div class="form-group" id="skillHead" >
+          <h5>SKILLS</h5>
+          <label>Enter Your Skills</label>
+        <br>
+        <textarea id="skillHead"  class="form-control"   rows="4" cols="50"  placeholder="   skill-1&#13;&#10;   skill-2&#13;&#10;   skill-3&#13;&#10;   skill-4"></textarea>
+        </div>
+       
+    <!-- Area of interest -->
+    <div class="form-group" id="aoiHead" >
+      <label>Enter your area of interest</label>
+        <h5>HOBBIES</h5>
+        <label>Your interested hobbies</label>
+      <br>
+      <textarea id="aoiHead"  class="form-control"   rows="4" cols="50"  placeholder="  Area of interest-1&#13;&#10;  Area of interest-2&#13;&#10;  Area of interest-3&#13;&#10;  Area of interest-4"></textarea>
+      </div>
+
+      
+    </div>
+
+    <br>
+
+    <!-- follow me social media  linkedIn-->
+    <div class="form-group">
+      <label>Do you have linked In profile?</label>
+      <input type="checkbox" id="check">
+      <button onclick="linkedInCheck()">Yes</button>
+      <button onclick="linkedInUnCheck()">NO</button>
+
+
+      <p id="showlinkedin"></p>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter your Email ID">
+    </div>
+
+    <!-- Projects -->
+    <div class="form-group">
+      <h5>PROJECTS</h5>
+      <label>Project Details</label>
+    <br>
+    <textarea  class="form-control" id="projectdes1" rows="4" cols="50"  placeholder="Project-1&#13;&#10;Project-2&#13;&#10;Project-3&#13;&#10;Project-4"></textarea>
+    </div>
+     
+    <!-- photo -->
+    <div class="form-group">
+      <label for="exampleFormControlFile1">upload your photo</label>
+      <input type="file" class="form-control-file" id="file-selector">
+    </div>
+
+
+    <button type="submit" class="btn btn-primary" onclick="data()">Submit</button>
+  </form>
+
+  <script>
+    
+
+    let skillLength = 5;
+    let y = 5;
+    let z = 2;
+    let skills = [];
+    let aoiArray = [];
+    let projectTitle = [];
+    let projectDes = [];
+
+    function data() {
+      event.preventDefault();
+
+
+
+      for (let l = 1; l < skillLength; l++) {
+
+
+
+        skills.push(document.getElementById("skill" + eval(l)).value);
+
+      }
+      let skill = {
+        skills
+      }
+
+      for (let l = 1; l < y; l++) {
+
+        aoiArray.push(document.getElementById("aoi" + eval(l)).value);
+      }
+      let aoi = {
+        AreaOfInterest: aoiArray
+      };
+
+      for (let l = 1; l < z; l++) {
+
+        projectTitle.push(document.getElementById("project" + eval(l)).value);
+        projectDes.push(document.getElementById("projectdes" + eval(l)).value);
+        console.log(l);
+      }
+
+      let project = {
+        projectTitle: projectTitle,
+        ProjectDescription: projectDes
+      };
+
+      localStorage.setItem("name", JSON.stringify(document.querySelector("#name").value)) || [];
+      localStorage.setItem("skillHead", JSON.stringify(document.querySelector("#skillHead").value)) || [];
+      localStorage.setItem("college", JSON.stringify(document.querySelector("#college").value)) || [];
+      localStorage.setItem("email", JSON.stringify(document.querySelector("#email").value)) || [];
+      localStorage.setItem("number", JSON.stringify(document.querySelector("#number").value)) || [];
+     
+      localStorage.setItem("department", JSON.stringify(document.querySelector("#department").value)) || [];
+      localStorage.setItem("percentage", JSON.stringify(document.querySelector("#percentage").value)) || [];
+      localStorage.setItem("address", JSON.stringify(document.querySelector("#address").value)) || [];
+      localStorage.setItem("skills", JSON.stringify(skill));
+      localStorage.setItem("areaOfInterest", JSON.stringify(aoi));
+      localStorage.setItem("Project", JSON.stringify(project));
+      alert("success");
+
+    }
+
+    function addSkill() {
+      event.preventDefault();
+      let form = document.createElement("form");
+      form.classList.add("form-group");
+      let input = document.createElement("input");
+      input.classList.add("form-control");
+      input.setAttribute("type", "text");
+      input.setAttribute("placeholder", "Enter skill " + eval(skillLength));
+      input.setAttribute("id", "skill" + eval(skillLength));
+      skillLength++;
+      form.appendChild(input);
+      let foo = document.getElementById("show");
+      foo.appendChild(form);
+
+
+    }
+
+    function removeSkill() {
+      event.preventDefault();
+      let list = document.getElementById("show");
+      list.removeChild(list.lastElementChild);
+      skillLength--;
+    }
+
+    function addAoi() {
+      event.preventDefault();
+      let form = document.createElement("form");
+      form.classList.add("form-group");
+      let input = document.createElement("input");
+      input.classList.add("form-control");
+      input.setAttribute("type", "text");
+      input.setAttribute("placeholder", "Enter Area of interest " + eval(y));
+      input.setAttribute("id", "aoi" + eval(y));
+      y++;
+      form.appendChild(input);
+      let foo = document.getElementById("showAoi");
+      foo.appendChild(form);
+
+
+    }
+
+    function removeAoi() {
+      event.preventDefault();
+      let list = document.getElementById("showAoi");
+      list.removeChild(list.lastElementChild);
+      y--;
+    }
+    let x = "no";
+
+    function linkedInCheck() {
+      event.preventDefault();
+      document.getElementById("check").checked = true;
+
+
+      let form = document.createElement("form");
+      form.classList.add("form-group");
+      let input = document.createElement("input");
+      input.classList.add("form-control");
+      input.setAttribute("type", "text");
+      input.setAttribute("placeholder", "Paste your profile link");
+      input.setAttribute("id", "linkedIn");
+      form.appendChild(input);
+      let foo = document.getElementById("showlinkedin");
+      foo.appendChild(form);
+      localStorage.setItem("linkedin", JSON.stringify(document.querySelector("#linkedIn").value)) || [];
+
+    }
+
+    function linkedInUnCheck() {
+      event.preventDefault();
+      document.getElementById("check").checked = false;
+      let foo = document.getElementById("showlinkedin");
+      foo.removeChild(foo.lastElementChild);
+    }
+
+    function addProject() {
+      event.preventDefault();
+      let form = document.createElement("form");
+      form.classList.add("form-group");
+      let title = document.createElement("label");
+
+      let input = document.createElement("input");
+      input.classList.add("form-control");
+      let desTitle = document.createElement("label");
+      let linebreak = document.createElement("br");
+      let linebreak2 = document.createElement("br");
+      let linebreak3 = document.createElement("br");
+      let linebreak4 = document.createElement("br");
+      input.setAttribute("type", "text");
+      input.setAttribute("placeholder", "Enter Project title ");
+      input.setAttribute("id", "project" + eval(z));
+
+      let des = document.createElement("textarea");
+      des.classList.add("form-control");
+      des.setAttribute("placeholder", "Enter description");
+      des.setAttribute("id", "projectdes" + eval(z))
+
+      title.innerHTML = "Project title";
+      desTitle.innerHTML = "Project description";
+      z++;
+      form.appendChild(title);
+      form.appendChild(linebreak2);
+      form.appendChild(input);
+      form.appendChild(linebreak3);
+      form.appendChild(desTitle);
+      form.appendChild(linebreak4);
+      form.appendChild(des);
+      let foo = document.getElementById("addProject");
+      foo.appendChild(form);
+
+
+    }
+
+    function removeProject() {
+      event.preventDefault();
+
+      let foo = document.getElementById("addProject");
+      foo.removeChild(foo.lastElementChild);
+      z--;
+    }
+  </script>
+</body>
+
+</html>
