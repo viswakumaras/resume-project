@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>template1</title>
+	<link rel="stylesheet" href="styles.css">
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="resume">
+			<div class="left">
+				<div class="img_holder" id="profile">
+					<img src="20200301172413_IMG_3gggg223.jpg" >
+				</div>
+				<div class="contact_wrap pb">
+					<div class="title" >
+					Contact
+					</div>
+					<div class="contact">
+						<ul>
+						<li>
+								<div class="li_wrap">
+									<div class="icon"><i class="fas fa-mobile-alt" aria-hidden="true"></i></div>
+									<div class="text" id="phone"> </div>
+								</div>
+						</li>
+						<li>
+								<div class="li_wrap">
+									<div class="icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
+									<div class="text" id="email"> </div>
+								</div>
+						</li>
+						<li>
+							<div class="li_wrap">
+								<div class="icon"><i class="fab fa-weebly" aria-hidden="true"></i></div>
+								<div class="text" id="address"> </div>
+							</div>
+						</li>
+						<li>
+						    <div class="li_wrap">
+								<div class="icon"><i class="fa-brands fa-linkedin"></i></div>
+								<div class="text" id="linkedin"></div>
+							</div>
+						</li>
+						</ul>
+					</div>
+				</div>
+                <!--------------------------------------skills---------------------------------------------->
+				<div class="skills_wrap pb a">
+					<div class="title">
+						Skills
+					</div>
+					<div  id="showSkills">
+					</div>
+				</div>
+
+<!---------------------------------------------------------- area of interest-------------->
+
+
+				<div class="hobbies_wrap pb">
+					<div class="title2"  >
+					 AreaOfInterest
+					</div>
+					<div id="showaoi">
+						 
+					</div>
+				</div>
+			</div>
+            <!---------------------------------------------------header------------------------>
+			<div class="right">
+				<div class="header">
+					<div class="name_role">
+						
+						<div class="name" id="name">
+							
+						</div>
+						<br>
+						<span class="role"> Under Graduation    :    </span>
+						<span class="role" id="college"></span>
+						<br>
+						<span class="role"> Percentage :</span>
+
+						<span class="role" id="percentage">	
+
+						</span>
+						<br>
+						<span class="role">  Department   :    </span>
+						<span class="role" id="department"> 
+
+						</span>
+						<br>
+     
+					
+					</div>
+					
+				</div>
+                <!---experience-->
+				<div class="right_inner">
+					<div class="exp">
+						<div class="title1">
+							project
+							
+						</div>
+						<div class="exp_wrap">
+							<ul>
+							<li>
+								<div class="li_wrap">
+								<div class="date">
+									
+								</div>
+									<div class="info">
+										<p class="info_title">
+												 
+										</p>
+										<p class="info_com">
+											
+										</p>
+										<p class="info_cont">
+										
+										</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="li_wrap">
+										<div class="date">
+										
+										</div>
+										<div class="info">
+											<p class="info_title">
+												
+											</p>
+											<p class="info_com">
+												
+											</p>
+											<p class="info_cont">
+												
+											</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="li_wrap">
+										<div class="date">
+										
+										</div>
+										<div class="info">
+											<p class="info_title">
+												
+											</p>
+											<p class="info_com">
+												
+											</p>
+											<p class="info_cont">
+												
+											</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+
+                    <!--education-->
+
+
+					<div class="education">
+						<div class="title">
+
+						</div>
+						<div class="education_wrap">
+							<ul>
+							<li>
+								<div class="li_wrap">
+										<div class="date">
+										
+										</div>
+								<div class="info">
+											<p class="info_title">
+												
+											</p>
+											<p class="info_com">
+												 
+											</p>
+											<p class="info_cont">
+												
+											</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="li_wrap">
+										<div class="date">
+											
+										</div>
+										<div class="info">
+											<p class="info_title">
+												
+											</p>
+											<p class="info_com">
+												
+											</p>
+											<p class="info_cont">
+												
+											</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="li_wrap">
+										<div class="date">
+										
+										</div>
+										<div class="info">
+											<p class="info_title">
+											
+											</p>
+											<p class="info_com">
+												 
+											</p>
+											<p class="info_cont">
+												
+											</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script>
+
+    document.getElementById("name").innerHTML =  JSON.parse(localStorage.getItem("name")); 
+	document.getElementById("college").innerHTML= JSON.parse(localStorage.getItem("college"));
+	document.getElementById("email").innerHTML = JSON.parse(localStorage.getItem("email"));
+	document.getElementById("phone").innerHTML = JSON.parse(localStorage.getItem("phone"));
+	document.getElementById("website").innerHTML = JSON.parse(localStorage.getItem("website"));
+	document.getElementById("linkedin").innerHTML = JSON.parse( localStorage.getItem("linkedin"));
+	document.getElementById("department").innerHTML = JSON.parse( localStorage.getItem("department"));
+	  document.getElementById("percentage").innerHTML  = JSON.parse( localStorage.getItem("percentage"));
+      document.getElementById("address").innerHTML= JSON.parse( localStorage.getItem("address"));
+	
+      JSON.parse( localStorage.getItem("areaOfInterest"));
+      JSON.parse( localStorage.getItem("Project"));
+//skills
+	  let skills=JSON.parse(localStorage.getItem("skills"));
+	   for(let i=0; i<skills.skills.length; i++){
+		let tag=document.createElement("ul");
+		tag.setAttribute("id","skill"+eval(i));
+		let foo=document.getElementById("showSkills");
+		foo.appendChild(tag);
+		document.getElementById("skill"+eval(i)).innerHTML="<li>"+skills.skills[i]+"</li>";
+	   }
+	   //AIO
+	   let skills=JSON.parse(localStorage.getItem("areaOfInterest"));
+	   for(let i=0; i<areaOfInterest.areaOfInterest.length; i++){
+		let tag=document.createElement("ul");
+		tag.setAttribute("id","aoi"+eval(i));
+		let foo=document.getElementById("showaoi");
+		foo.appendChild(tag);
+		document.getElementById("skill"+eval(i)).innerHTML="<li>"+areaOfInterest.areaOfInterest[i]+"</li>";
+	   }
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
